@@ -20,8 +20,6 @@ base("songs").select({
 // an empty array to hold our people data
 let songs = [];
 
-let originalSongs = [];
-
 // callback function that receives each page of data (considered here as records) and adds them to our list of songs
 function gotPageOfData(records, fetchNextPage) {
   console.log("gotPageOfData()");
@@ -45,9 +43,6 @@ function gotAllData(err) {
 
   // call function to show the data
   showData();
-
-  //record the original order of our data
-  originalSongs = songs;
 }
 
 // show the data on the page
@@ -155,11 +150,6 @@ function showData() {
     let resetButtton = document.getElementById('resetButton');
     resetButtton.addEventListener("click", function(){
         songContainer.style.display = "block";
-
-        //Reset the songs to the original
-        songsContainer.innerHTML = "";
-        songs = originalSongs;
-        showData();
     });
 
     songsContainer.appendChild(songContainer);
